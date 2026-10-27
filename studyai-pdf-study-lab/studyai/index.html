@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyAI | Level Up Your Learning</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">✦</span><span>STUDY<span class="accent">AI</span></span></div>
+      <p class="side-label">YOUR SPACE</p>
+      <button class="nav-link active" data-target="dashboard">▦ <span>Dashboard</span></button>
+      <button class="nav-link" data-target="missions">☑ <span>Study missions</span></button>
+      <button class="nav-link" data-target="tutor">✧ <span>AI study buddy</span></button>
+      <button class="nav-link" data-target="focus">◷ <span>Focus mode</span></button>
+      <button class="nav-link" data-target="pdfs">▤ <span>PDF library</span></button>
+      <div class="sidebar-bottom">
+        <div class="mini-level"><span class="level-badge">LVL 03</span><p>Learning streak</p><strong>Keep it going!</strong><div class="tiny-track"><i></i></div></div>
+        <p class="small muted">DEMO BUILD · 2026</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><p class="eyebrow">STUDENT CONTROL CENTER</p><h1 id="page-title">Your study dashboard<span class="title-dot">.</span></h1></div>
+        <div class="top-right"><span class="online-dot"></span><span class="muted">SYSTEM ONLINE</span><div class="avatar">S</div></div>
+      </header>
+
+      <section id="dashboard" class="page-section">
+        <div class="hero panel">
+          <div class="hero-copy"><span class="pill">✦ READY PLAYER ONE</span><h2>Small steps.<br><span class="gradient-text">Big achievements.</span></h2><p>Turn today's study goals into your next level-up.</p><button class="primary-btn" data-jump="missions">View my missions <span>↗</span></button></div>
+          <div class="hero-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="core">✦<small>FOCUS</small></div><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div></div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card panel"><div class="stat-icon cyan">☑</div><p>MISSIONS DONE</p><strong id="completed-stat">0</strong><span class="stat-note">tasks completed</span></div>
+          <div class="stat-card panel"><div class="stat-icon purple">◷</div><p>FOCUS TIME</p><strong id="minutes-stat">0 <small>min</small></strong><span class="stat-note">this session</span></div>
+          <div class="stat-card panel"><div class="stat-icon green">⚡</div><p>XP EARNED</p><strong id="xp-stat">0</strong><span class="stat-note">experience points</span></div>
+        </div>
+
+        <div class="content-grid">
+          <div class="panel section-card"><div class="section-heading"><div><p class="eyebrow">YOUR CHECKLIST</p><h3>Today's missions</h3></div><button class="text-btn" data-jump="missions">See all ↗</button></div><div id="dashboard-tasks" class="task-list"></div></div>
+          <div class="panel section-card"><div class="section-heading"><div><p class="eyebrow">QUICK BOOST</p><h3>Study tip</h3></div><span class="tip-symbol">✧</span></div><div class="tip-box"><span class="tip-label">TIP #01</span><p>Try studying for 25 minutes, then take a 5-minute break. Short, focused sessions can make a big task feel easier.</p><button class="secondary-btn" data-jump="focus">Start focus mode →</button></div></div>
+        </div>
+      </section>
+
+      <section id="missions" class="page-section hidden">
+        <div class="panel section-card"><div class="section-heading"><div><p class="eyebrow">QUEST LOG</p><h3>Study missions</h3><p class="muted">Add a task, complete it, and earn XP.</p></div></div>
+          <form id="task-form" class="task-form"><input id="task-input" type="text" maxlength="90" placeholder="e.g. Review biology notes" required><button class="primary-btn" type="submit">+ Add mission</button></form>
+          <div id="all-tasks" class="task-list roomy"></div>
+        </div>
+      </section>
+
+      <section id="tutor" class="page-section hidden">
+        <div class="panel section-card tutor-panel"><p class="eyebrow">STUDY SUPPORT MODULE</p><h3>Ask your study buddy <span class="gradient-text">✧</span></h3><p class="muted">Enter a topic and get a quick explanation or study prompt.</p>
+          <form id="tutor-form" class="tutor-form"><label for="topic-input">WHAT ARE YOU LEARNING?</label><textarea id="topic-input" rows="3" placeholder="Try: photosynthesis, fractions, or the solar system..." required></textarea><button class="primary-btn" type="submit">Generate study help ✦</button></form>
+          <div id="tutor-output" class="tutor-output"><div class="output-icon">✧</div><p>Your study help will appear here.</p></div>
+          <p class="small muted">Demo note: this version uses built-in sample explanations, not a live AI service. Always verify important information with your class materials.</p>
+        </div>
+      </section>
+
+      <section id="focus" class="page-section hidden">
+        <div class="panel focus-panel"><p class="eyebrow">DEEP WORK PROTOCOL</p><h3>Focus mode</h3><p class="muted">One task at a time. You can do this.</p>
+          <div class="timer-ring"><div class="timer-inner"><span id="timer-display">25:00</span><small>MINUTES LEFT</small></div></div>
+          <div class="timer-controls"><button id="start-timer" class="primary-btn">▶ Start</button><button id="pause-timer" class="secondary-btn">Ⅱ Pause</button><button id="reset-timer" class="secondary-btn">↻ Reset</button></div>
+          <div class="duration-row"><span>SESSION LENGTH</span><button class="duration-btn selected" data-minutes="25">25 min</button><button class="duration-btn" data-minutes="15">15 min</button><button class="duration-btn" data-minutes="5">5 min</button></div>
+          <p id="timer-message" class="muted small">Choose a session and press Start when you're ready.</p>
+        </div>
+      </section>
+
+      <section id="pdfs" class="page-section hidden">
+        <div class="panel section-card pdf-panel">
+          <p class="eyebrow">YOUR STUDY FILES</p>
+          <h3>PDF Study Lab <span class="gradient-text">▤</span></h3>
+          <p class="muted">Upload class notes, extract the text, then make a summary, quiz, or flashcards from your document.</p>
+          <div class="pdf-upload-box">
+            <div class="pdf-upload-icon">⇧</div>
+            <label for="pdf-input">CHOOSE YOUR STUDY PDF</label>
+            <input id="pdf-input" type="file" accept="application/pdf,.pdf">
+            <p class="small muted">Text-based PDFs work best. Scanned image-only PDFs need OCR, which this demo doesn't include.</p>
+          </div>
+          <div id="pdf-status" class="pdf-status muted" aria-live="polite">No PDF selected yet.</div>
+          <div id="pdf-tools" class="pdf-tools hidden">
+            <div class="pdf-actions">
+              <button id="make-summary" class="primary-btn" type="button">✦ Make summary</button>
+              <button id="make-quiz" class="secondary-btn" type="button">▣ Make quiz</button>
+              <button id="make-cards" class="secondary-btn" type="button">▤ Make flashcards</button>
+            </div>
+            <div id="pdf-result" class="pdf-result"><p class="muted">Choose an action to create study material from your PDF.</p></div>
+            <details class="extracted-details"><summary>View extracted PDF text</summary><pre id="pdf-extracted-text"></pre></details>
+          </div>
+          <div id="pdf-viewer-wrap" class="pdf-viewer-wrap hidden">
+            <div class="pdf-viewer-heading"><strong id="pdf-file-name">Selected PDF</strong><button id="remove-pdf" class="secondary-btn" type="button">Remove PDF</button></div>
+            <iframe id="pdf-viewer" title="PDF document preview"></iframe>
+          </div>
+          <p class="small muted pdf-disclaimer">This beginner demo creates study materials using simple text-processing rules, not a live AI model. It may make mistakes, so check the results against your notes.</p>
+        </div>
+      </section>
+
+      <footer><span>STUDYAI <span class="accent">●</span> BUILT TO HELP YOU LEVEL UP</span><span>DEMO VERSION · YOUR PROGRESS SAVES ON THIS DEVICE</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
